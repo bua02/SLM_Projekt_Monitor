@@ -2,13 +2,9 @@ package com.fhtw.slm_projekt_monitor;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
-import org.mockito.junit.MockitoJUnitRunner;
-
 
 import static com.fhtw.slm_projekt_monitor.MessageUtil.EVERYTHING_WORKS_AS_EXPECTED_MESSAGE;
 import static com.fhtw.slm_projekt_monitor.MessageUtil.OK_MESSAGE;
-@RunWith(MockitoJUnitRunner.class)
 
 class MonitorTest {
 
