@@ -6,11 +6,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class MonitorController {
-    private Monitor monitor = new Monitor();
+    private final Monitor monitor = new Monitor();
 
     @GetMapping("/api/message")
     public String getMessage(){
-        return monitor.getMtnmessage();
+        return monitor.getMonitorMessage();
     }
 
     @GetMapping("/api/message/reset")
@@ -19,7 +19,7 @@ public class MonitorController {
     }
 
     @GetMapping("/api/message/set")
-    public String setMessage(@RequestParam(name="m") String mtnMessage){
-        return monitor.set(mtnMessage);
+    public String setMessage(@RequestParam(name= "m") String monitorMessage){
+        return monitor.set(monitorMessage);
     }
 }
