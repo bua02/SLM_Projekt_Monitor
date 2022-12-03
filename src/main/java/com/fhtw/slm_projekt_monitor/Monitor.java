@@ -2,12 +2,13 @@ package com.fhtw.slm_projekt_monitor;
 
 import java.text.SimpleDateFormat;
 
+import static com.fhtw.slm_projekt_monitor.MessageUtil.EVERYTHING_WORKS_AS_EXPECTED_MESSAGE;
+import static com.fhtw.slm_projekt_monitor.MessageUtil.OK_MESSAGE;
+
 public class Monitor {
-    private static final String EVERYTHING_WORKS_AS_EXPECTED_MESSAGE = "Everything works as expected";
-    private static final String OK_MESSAGE = "ok";
 
     private String monitorMessage;
-    private String lastUpdate;
+    private String lastUpdate = getCurrentTime();
 
     public Monitor() {
         this.monitorMessage = "";
@@ -20,7 +21,7 @@ public class Monitor {
     public String set(String monitorMessage) {
 
         this.monitorMessage = monitorMessage;
-        this.lastUpdate = new SimpleDateFormat("HH:mm:ss").format(new java.util.Date());
+        this.lastUpdate = getCurrentTime();
 
         return OK_MESSAGE + "\n" + this.lastUpdate;
     }
@@ -28,9 +29,13 @@ public class Monitor {
     public String reset() {
 
         this.monitorMessage = "";
-        this.lastUpdate = new SimpleDateFormat("HH:mm:ss").format(new java.util.Date());
+        this.lastUpdate = getCurrentTime();
 
         return OK_MESSAGE;
+    }
+
+    private String getCurrentTime() {
+        return new SimpleDateFormat("HH:mm:ss").format(new java.util.Date());
     }
 
     public String getMonitorMessage() {
@@ -40,5 +45,9 @@ public class Monitor {
         }
 
         return this.monitorMessage;
+    }
+
+    public String getLastUpdate() {
+        return this.lastUpdate;
     }
 }
