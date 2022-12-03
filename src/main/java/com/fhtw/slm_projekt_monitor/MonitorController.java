@@ -35,6 +35,7 @@ public class MonitorController {
     @RequestMapping(value = "/",  produces = MediaType.TEXT_HTML_VALUE)
     @ResponseBody
     public String showMonitor() {
+        monitor.updateTime();
         if (monitor.getMonitorMessage().equals(EVERYTHING_WORKS_AS_EXPECTED_MESSAGE)) {
             return TextContent.getGreenMonitor(monitor.getMonitorMessage(), monitor.getLastUpdate());
         }
