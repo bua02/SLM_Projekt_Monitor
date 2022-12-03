@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import static com.fhtw.slm_projekt_monitor.MessageUtil.EVERYTHING_WORKS_AS_EXPECTED_MESSAGE;
 
-@RestController
+@Controller
 public class MonitorController {
     private final Monitor monitor = new Monitor();
 
