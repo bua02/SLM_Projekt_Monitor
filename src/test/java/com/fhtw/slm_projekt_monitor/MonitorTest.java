@@ -1,40 +1,46 @@
 package com.fhtw.slm_projekt_monitor;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.Mockito;
+import org.junit.runner.RunWith;
+import org.mockito.junit.MockitoJUnitRunner;
 
-import java.util.Date;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.when;
+import static com.fhtw.slm_projekt_monitor.MessageUtil.EVERYTHING_WORKS_AS_EXPECTED_MESSAGE;
+import static com.fhtw.slm_projekt_monitor.MessageUtil.OK_MESSAGE;
+@RunWith(MockitoJUnitRunner.class)
 
 class MonitorTest {
 
-    @InjectMocks Monitor monitor;
-
-    @Mock
-    Date date;
-
-
     @Test
     void setTest() {
-        /*final String testMessage = "test";
-        when(monitor.set())
-        monitor.set(testMessage);*/
+        final String testMessage = "test";
+        final Monitor monitor = new Monitor();
 
+        Assertions.assertTrue(monitor.set(testMessage).contains(OK_MESSAGE));
     }
 
     @Test
     void resetTest() {
+        final Monitor monitor = new Monitor();
+
+        Assertions.assertEquals(OK_MESSAGE, monitor.reset());
+        Assertions.assertEquals(EVERYTHING_WORKS_AS_EXPECTED_MESSAGE, monitor.getMonitorMessage());
     }
 
     @Test
-    void getMonitorMessageTest() {
+    void getMonitorMessageTest_ReturnsDefaultMessage() {
+        Monitor monitor = new Monitor();
+
+        Assertions.assertEquals(EVERYTHING_WORKS_AS_EXPECTED_MESSAGE, monitor.getMonitorMessage());
     }
 
     @Test
-    void getLastUpdateTest() {
+    void getMonitorMessageTest_ReturnsSetMessage() {
+        final String testMessage = "ALARM MESSAGE";
+        Monitor monitor = new Monitor();
+        monitor.set(testMessage);
+
+        Assertions.assertEquals(testMessage, monitor.getMonitorMessage());
     }
 }

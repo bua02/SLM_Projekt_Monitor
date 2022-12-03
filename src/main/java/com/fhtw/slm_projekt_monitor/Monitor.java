@@ -34,7 +34,7 @@ public class Monitor {
         return OK_MESSAGE;
     }
 
-    private String getCurrentTime() {
+    public String getCurrentTime() {
         return new SimpleDateFormat("HH:mm:ss").format(new java.util.Date());
     }
 
@@ -49,5 +49,9 @@ public class Monitor {
 
     public String getLastUpdate() {
         return this.lastUpdate;
+    }
+
+    public void updateTime() {
+        lastUpdate = getCurrentTime();
     }
 }
