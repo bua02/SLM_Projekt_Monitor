@@ -14,7 +14,7 @@
     <name>SLM_Projekt_Monitor</name>
     <description>SLM_Projekt_Monitor</description>
     <properties>
-        <java.version>11</java.version>
+        <java.version>17</java.version>
     </properties>
     <dependencies>
         <dependency>
